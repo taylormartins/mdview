@@ -1,0 +1,14 @@
+{
+  "name": "mdview",
+  "version": "2.0.0",
+  "description": "Pixel-themed offline Markdown viewer: themes, reading styles, outline, find, math, diagrams, live reload.",
+  "type": "module",
+  "bin": { "mdview": "mdview.mjs" },
+  "scripts": {
+    "test": "node tests/smoke.mjs",
+    "icon": "node tools/make-icon.mjs"
+  },
+  "engines": { "node": ">=18" },
+  "devDependencies": { "puppeteer-core": "^24.0.0" },
+  "license": "MIT"
+}
