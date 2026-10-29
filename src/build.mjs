@@ -1,15 +1,14 @@
 // Builds one self-contained HTML page for a Markdown file. Nothing here touches the network.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, basename, resolve, join } from 'node:path';
-import { pathToFileURL, fileURLToPath } from 'node:url';
+import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { THEMES, themeCss } from './themes.mjs';
+import { asset, assetText } from './assets.mjs';
 
-const here = dirname(fileURLToPath(import.meta.url));
-const root = join(here, '..');
-const rd = p => readFileSync(join(root, p), 'utf8');
-const b64 = p => readFileSync(join(root, p)).toString('base64');
+const rd = assetText;
+const b64 = p => asset(p).toString('base64');
 export const OUT_DIR = join(tmpdir(), 'mdview');
 const MD_EXT = /\.(md|markdown|mdown|mkd)$/i;
 const MAX_LINKED = 30;

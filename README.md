@@ -33,6 +33,20 @@ Nothing is uploaded and nothing is fetched: every library is bundled, and the pa
 
 ## Install (Windows)
 
+### The EXE (no Node needed)
+
+`MdView.exe` is one self-contained file (the runtime and every library are inside). Put it anywhere and run it once to register it:
+
+```
+MdView.exe --register
+```
+
+That adds MdView to *Open with* and the right-click menu, and makes it the default for `.md` files unless you already picked another app (Windows keeps an explicit choice; then use Open with > MdView > Always). Double-click `MdView.exe` with no file to see a built-in tour. `MdView.exe --unregister` removes it again.
+
+Build it yourself with `npm install` then `npm run build:exe` (output: `dist/MdView.exe`, about 90 MB because it carries Node).
+
+### From source
+
 You need [Node.js](https://nodejs.org) 18 or newer.
 
 ```powershell
@@ -99,7 +113,7 @@ Scripts, event handlers and `javascript:` links in a Markdown file are removed, 
 
 Files in the repo:
 
-- `mdview.mjs` command line entry
+- `mdview.mjs` command line entry, `src/register.mjs` the Windows registration, `tools/build-exe.mjs` builds the EXE
 - `src/build.mjs` builds the page, `src/viewer.js` and `src/viewer.css` are the page itself, `src/themes.mjs` holds the palettes
 - `mdview.vbs` hidden launcher used by the registry entries, `mdview.cmd` for terminals
 - `vendor/` bundled libraries with their licences, `assets/` icon, `tools/make-icon.mjs` redraws it
